@@ -1,20 +1,29 @@
 # QA Automation Framework – SauceDemo
 
-This project is a basic UI automation framework built using:
+This project is a UI automation framework built using:
 
 - Python
-- Selenium
+- Selenium WebDriver
 - Pytest
 - Page Object Model (POM)
 
-## Project Overview
+## Overview
 
-The framework automates the following scenarios on https://www.saucedemo.com:
+The framework automates core user flows on https://www.saucedemo.com, including:
 
 - Valid login
 - Invalid login
 - Add product to cart
-- Complete checkout flow
+- Complete checkout process
+
+The project follows Page Object Model structure to ensure maintainability and scalability.
+
+## Tech Stack
+
+- Python 3.x
+- Selenium
+- Pytest
+- Chrome WebDriver
 
 ## Project Structure
 
@@ -22,7 +31,7 @@ qa-automation-saucedemo/
 │
 ├── pages/           # Page Object classes
 ├── tests/           # Test files
-├── conftest.py      # Pytest fixtures (WebDriver setup)
+├── conftest.py      # WebDriver fixture setup
 ├── requirements.txt
 └── README.md
 
@@ -37,3 +46,10 @@ qa-automation-saucedemo/
    pip install -r requirements.txt
 5. Run tests:
    pytest
+
+## Future Improvements
+
+- Add explicit waits where needed
+- Add parallel execution
+- Integrate CI/CD (GitHub Actions)
+- Add reporting (Allure / HTML reports)
