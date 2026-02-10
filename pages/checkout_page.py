@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
 
 
@@ -19,8 +20,18 @@ class CheckoutPage(BasePage):
     def continue_checkout(self):
         self.click(self.CONTINUE_BUTTON)
 
+        # ✅ Wait for next step page to load
+        self.wait.until(
+            EC.url_contains("checkout-step-two")
+        )
+
     def finish_checkout(self):
         self.click(self.FINISH_BUTTON)
+
+        # ✅ Wait for confirmation page
+        self.wait.until(
+            EC.url_contains("checkout-complete")
+        )
 
     def get_success_message(self):
         return self.get_text(self.SUCCESS_MESSAGE)
