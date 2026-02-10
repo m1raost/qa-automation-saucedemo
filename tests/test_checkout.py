@@ -22,10 +22,9 @@ def test_complete_checkout_flow(driver):
 
     inventory_page = InventoryPage(driver)
     inventory_page.add_backpack_to_cart()
+    inventory_page.open_cart()
 
     cart_page = CartPage(driver)
-    cart_page.open_cart()
-    print(driver.current_url)
     cart_page.click_checkout()
 
     checkout_page = CheckoutPage(driver)

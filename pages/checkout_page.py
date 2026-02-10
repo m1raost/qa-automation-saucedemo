@@ -12,15 +12,15 @@ class CheckoutPage(BasePage):
     SUCCESS_MESSAGE = (By.CLASS_NAME, "complete-header")
 
     def fill_checkout_form(self, first_name, last_name, postal_code):
-        self.driver.find_element(*self.FIRST_NAME).send_keys(first_name)
-        self.driver.find_element(*self.LAST_NAME).send_keys(last_name)
-        self.driver.find_element(*self.POSTAL_CODE).send_keys(postal_code)
+        self.type(self.FIRST_NAME, first_name)
+        self.type(self.LAST_NAME, last_name)
+        self.type(self.POSTAL_CODE, postal_code)
 
     def continue_checkout(self):
-        self.driver.find_element(*self.CONTINUE_BUTTON).click()
+        self.click(self.CONTINUE_BUTTON)
 
     def finish_checkout(self):
-        self.driver.find_element(*self.FINISH_BUTTON).click()
+        self.click(self.FINISH_BUTTON)
 
     def get_success_message(self):
-        return self.driver.find_element(*self.SUCCESS_MESSAGE).text
+        return self.get_text(self.SUCCESS_MESSAGE)
