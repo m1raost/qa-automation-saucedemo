@@ -4,11 +4,11 @@ from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 
 
-def test_add_backpack_to_cart(logged_in_driver):
+def test_inventory_page_loads(logged_in_driver):
     inventory_page = InventoryPage(logged_in_driver)
-    inventory_page.add_backpack_to_cart()
 
-    assert inventory_page.get_cart_count() == "1"
+    assert inventory_page.get_page_title() == "Products"
+    assert inventory_page.get_product_count() == 6
 
 
 def test_complete_checkout_flow(logged_in_driver):
