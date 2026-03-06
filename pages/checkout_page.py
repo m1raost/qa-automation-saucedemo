@@ -20,7 +20,7 @@ class CheckoutPage(BasePage):
 
     def continue_checkout(self):
         self.click(self.CONTINUE_BUTTON)
-        self.wait.until(EC.url_contains("checkout-step-two"))
+        self.wait.until(EC.visibility_of_element_located(self.FINISH_BUTTON))
 
     def submit_empty_form(self):
         self.click(self.CONTINUE_BUTTON)
@@ -30,11 +30,7 @@ class CheckoutPage(BasePage):
 
     def finish_checkout(self):
         self.click(self.FINISH_BUTTON)
-
-        # ✅ Wait for confirmation page
-        self.wait.until(
-            EC.url_contains("checkout-complete")
-        )
+        self.wait.until(EC.visibility_of_element_located(self.SUCCESS_MESSAGE))
 
     def get_success_message(self):
         return self.get_text(self.SUCCESS_MESSAGE)

@@ -8,10 +8,5 @@ class CartPage(BasePage):
     CHECKOUT_BUTTON = (By.ID, "checkout")
 
     def click_checkout(self):
-        # wait until we're actually on cart page
-        self.wait.until(EC.url_contains("cart"))
-
         self.click(self.CHECKOUT_BUTTON)
-
-        # wait until checkout page loads
-        self.wait.until(EC.url_contains("checkout-step-one"))
+        self.wait.until(EC.visibility_of_element_located((By.ID, "first-name")))
