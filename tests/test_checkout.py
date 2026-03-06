@@ -31,3 +31,22 @@ def test_complete_checkout_flow(logged_in_driver):
     checkout_page.finish_checkout()
 
     assert "Thank you" in checkout_page.get_success_message()
+
+
+def test_checkout_empty_form(checkout_ready_driver):
+    checkout_page = CheckoutPage(checkout_ready_driver)
+    checkout_page.submit_empty_form()
+
+    assert "First Name is required" in checkout_page.get_error_message()
+
+
+def test_checkout_missing_postal_code(checkout_ready_driver):
+    checkout_page = CheckoutPage(checkout_ready_driver)
+    checkout_page.fill_checkout_form(
+        config.CHECKOUT_FIRST_NAME,
+        config.CHECKOUT_LAST_NAME,
+        "",
+    )
+    checkout_page.submit_empty_form()
+
+    assert "Postal Code is required" in checkout_page.get_error_message()
