@@ -12,9 +12,11 @@ This project is a UI automation framework built using:
 The framework automates core user flows on https://www.saucedemo.com, including:
 
 - Valid login
-- Invalid login
+- Invalid login (wrong password, locked out user, empty fields)
+- Access control (unauthenticated redirect)
 - Add product to cart
 - Complete checkout process
+- Checkout validation (empty form, missing postal code)
 
 The project follows Page Object Model structure to ensure maintainability and scalability.
 
@@ -52,4 +54,3 @@ qa-automation-saucedemo/
 - Add parallel execution
 - Integrate CI/CD (GitHub Actions)
 - Add reporting (Allure / HTML reports)
-- Add negative checkout tests (empty fields, invalid data)
