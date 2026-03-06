@@ -1,6 +1,9 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
@@ -25,6 +28,9 @@ def logged_in_driver(driver):
     login_page = LoginPage(driver)
     login_page.open(config.BASE_URL)
     login_page.login(config.VALID_USERNAME, config.VALID_PASSWORD)
+    WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.CLASS_NAME, "inventory_list"))
+    )
     yield driver
 
 

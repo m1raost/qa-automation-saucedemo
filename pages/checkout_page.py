@@ -10,6 +10,7 @@ class CheckoutPage(BasePage):
     POSTAL_CODE = (By.ID, "postal-code")
     CONTINUE_BUTTON = (By.ID, "continue")
     FINISH_BUTTON = (By.ID, "finish")
+    SUMMARY_CONTAINER = (By.CLASS_NAME, "checkout_summary_container")
     SUCCESS_MESSAGE = (By.CLASS_NAME, "complete-header")
     ERROR_MESSAGE = (By.CSS_SELECTOR, "[data-test='error']")
 
@@ -19,17 +20,17 @@ class CheckoutPage(BasePage):
         self.type(self.POSTAL_CODE, postal_code)
 
     def continue_checkout(self):
-        self.click(self.CONTINUE_BUTTON)
-        self.wait.until(EC.visibility_of_element_located(self.FINISH_BUTTON))
+        self.js_click(self.CONTINUE_BUTTON)
+        self.wait.until(EC.visibility_of_element_located(self.SUMMARY_CONTAINER))
 
     def submit_empty_form(self):
-        self.click(self.CONTINUE_BUTTON)
+        self.js_click(self.CONTINUE_BUTTON)
 
     def get_error_message(self):
         return self.get_text(self.ERROR_MESSAGE)
 
     def finish_checkout(self):
-        self.click(self.FINISH_BUTTON)
+        self.js_click(self.FINISH_BUTTON)
         self.wait.until(EC.visibility_of_element_located(self.SUCCESS_MESSAGE))
 
     def get_success_message(self):

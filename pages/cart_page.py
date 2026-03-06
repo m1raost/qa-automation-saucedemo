@@ -8,5 +8,5 @@ class CartPage(BasePage):
     CHECKOUT_BUTTON = (By.ID, "checkout")
 
     def click_checkout(self):
-        self.click(self.CHECKOUT_BUTTON)
+        self.js_click(self.CHECKOUT_BUTTON)
         self.wait.until(EC.visibility_of_element_located((By.ID, "first-name")))

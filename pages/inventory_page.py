@@ -21,5 +21,5 @@ class InventoryPage(BasePage):
         return self.get_text(self.CART_BADGE)
 
     def open_cart(self):
-        self.click(self.CART_ICON)
+        self.js_click(self.CART_ICON)
         self.wait.until(EC.visibility_of_element_located((By.ID, "checkout")))
