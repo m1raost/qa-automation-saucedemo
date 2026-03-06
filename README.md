@@ -49,7 +49,7 @@ qa-automation-saucedemo/
 
 ## Future Improvements
 
-- Add explicit waits where needed
 - Add parallel execution
 - Integrate CI/CD (GitHub Actions)
 - Add reporting (Allure / HTML reports)
+- Add negative checkout tests (empty fields, invalid data)

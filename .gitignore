@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 .idea/
 .DS_Store
+.pytest_cache/
+reports/
+screenshots/
+*.log
+welcome-to-docker/

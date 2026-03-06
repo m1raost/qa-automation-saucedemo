@@ -1,0 +1,9 @@
+BASE_URL = "https://www.saucedemo.com/"
+
+VALID_USERNAME = "standard_user"
+VALID_PASSWORD = "secret_sauce"
+INVALID_PASSWORD = "wrong_password"
+
+CHECKOUT_FIRST_NAME = "Test"
+CHECKOUT_LAST_NAME = "User"
+CHECKOUT_POSTAL_CODE = "12345"
