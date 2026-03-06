@@ -44,5 +44,6 @@ def test_empty_password(driver):
 
 def test_access_inventory_without_login(driver):
     driver.get(config.BASE_URL + "inventory.html")
+    login_page = LoginPage(driver)
 
-    assert "inventory" not in driver.current_url
+    assert login_page.is_on_login_page()
