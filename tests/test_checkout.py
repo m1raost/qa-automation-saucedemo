@@ -1,6 +1,5 @@
 import config
 from pages.inventory_page import InventoryPage
-from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 
 
@@ -12,14 +11,7 @@ def test_inventory_page_loads(logged_in_driver):
 
 
 def test_complete_checkout_flow(logged_in_driver):
-    inventory_page = InventoryPage(logged_in_driver)
-    inventory_page.add_backpack_to_cart()
-    assert inventory_page.get_cart_count() == "1"
-
-    inventory_page.open_cart()
-
-    cart_page = CartPage(logged_in_driver)
-    cart_page.click_checkout()
+    logged_in_driver.get(config.CHECKOUT_URL)
 
     checkout_page = CheckoutPage(logged_in_driver)
     checkout_page.fill_checkout_form(

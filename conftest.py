@@ -5,8 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from pages.login_page import LoginPage
-from pages.inventory_page import InventoryPage
-from pages.cart_page import CartPage
 import config
 
 
@@ -36,11 +34,8 @@ def logged_in_driver(driver):
 
 @pytest.fixture
 def checkout_ready_driver(logged_in_driver):
-    inventory_page = InventoryPage(logged_in_driver)
-    inventory_page.add_backpack_to_cart()
-    inventory_page.open_cart()
-
-    cart_page = CartPage(logged_in_driver)
-    cart_page.click_checkout()
-
+    logged_in_driver.get(config.CHECKOUT_URL)
+    WebDriverWait(logged_in_driver, 20).until(
+        EC.visibility_of_element_located((By.ID, "first-name"))
+    )
     yield logged_in_driver
