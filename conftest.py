@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from pages.login_page import LoginPage
+from pages.inventory_page import InventoryPage
 import config
 
 
@@ -30,6 +31,17 @@ def logged_in_driver(driver):
         EC.visibility_of_element_located((By.CLASS_NAME, "inventory_list"))
     )
     yield driver
+
+
+@pytest.fixture
+def cart_with_item_driver(logged_in_driver):
+    inventory_page = InventoryPage(logged_in_driver)
+    inventory_page.add_first_item_to_cart()
+    inventory_page.go_to_cart()
+    WebDriverWait(logged_in_driver, 20).until(
+        EC.visibility_of_element_located((By.CLASS_NAME, "cart_item"))
+    )
+    yield logged_in_driver
 
 
 @pytest.fixture
